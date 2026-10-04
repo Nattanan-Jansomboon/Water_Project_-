@@ -1,0 +1,213 @@
+{
+  "main": {
+    "id": "0ad402e0ca3396e3",
+    "type": "split",
+    "children": [
+      {
+        "id": "5b77ac7329f5890a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6198de37a2cf6d57",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "กำแพงเพชร/กำแพงเพชร.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "กำแพงเพชร"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a6735701bb42a8bf",
+    "type": "split",
+    "children": [
+      {
+        "id": "dbf4251b16955e21",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "285b5d4f4498145e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "edca6f02adf8c131",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "8960d58a22dd2ee3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "1751b405f03d1015",
+    "type": "split",
+    "children": [
+      {
+        "id": "2763a5fd704dd146",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dee3faa969012d53",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "กำแพงเพชร/_index.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "90c74cc754895174",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "กำแพงเพชร/_index.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "a2b7772661975f86",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "b0b2a1f15217a0e1",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "4be7052d6fea0743",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "log.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "6198de37a2cf6d57",
+  "lastOpenFiles": [
+    "index.md",
+    "กำแพงเพชร/ร่าง-คู่มือการใช้งานระบบภูมิสารสนเทศสนับสนุนการบริหารจัดการน้ำ-1.md",
+    "กำแพงเพชร/ระบบภูมิสารสนเทศการบริหารจัดการน้ำ_จังหวัดกำแพงเพชร.md",
+    "กำแพงเพชร/ระบบภูมิสารสนเทศ ฝน ฟ้าพยากรณ์ท้องถิ่น – สร้างสรรค์ปัญญา.md",
+    "กำแพงเพชร/กำแพงเพชร.md",
+    "กำแพงเพชร/Rainfall_2026-08-19_to_2026-08-19.md",
+    "_REGISTRY/agency.md",
+    "_REGISTRY/location.md",
+    "_REGISTRY/project.md",
+    "กำแพงเพชร/_SYNTHESIS/_ANALYSIS_ยุทธศาสตร์-คู่มือ-vs-แดชบอร์ดGIS.md",
+    "กำแพงเพชร/_index.md",
+    "log.md",
+    "กำแพงเพชร/ระบบภูมิสารสนเทศ ฝน ฟ้าพยากรณ์ท้องถิ่น – สร้างสรรค์ปัญญา.pdf.md",
+    "กำแพงเพชร/กำแพงเพชร.xlsx.md",
+    "กำแพงเพชร/Rainfall_2026-08-19_to_2026-08-19.xlsx.md",
+    "กำแพงเพชร/ระบบภูมิสารสนเทศการบริหารจัดการน้ำ_จังหวัดกำแพงเพชร.pdf.md",
+    "ขอนแก่น/ดร. โพยม สราภิรมย์ มข/_index.md",
+    "SUMMERIZE.md"
+  ]
+}

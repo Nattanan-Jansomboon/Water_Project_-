@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Water LLM</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    max-width: 760px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    line-height: 1.5;
+  }
+  h1 { font-size: 1.4rem; }
+  section {
+    border: 1px solid #8884;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  h2 { font-size: 1.05rem; margin-top: 0; }
+  .row { display: flex; gap: 0.5rem; align-items: center; }
+  button {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #8886;
+    cursor: pointer;
+    background: #6469;
+    color: inherit;
+  }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  #ingestStatus, #chatStatus { margin-top: 0.75rem; font-size: 0.9rem; opacity: 0.85; white-space: pre-wrap; }
+  #chatLog { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem; max-height: 400px; overflow-y: auto; }
+  .bubble { padding: 0.5rem 0.8rem; border-radius: 10px; max-width: 85%; white-space: pre-wrap; }
+  .bubble.user { align-self: flex-end; background: #3b82f633; }
+  .bubble.assistant { align-self: flex-start; background: #8886; }
+  #chatInput { flex: 1; padding: 0.5rem; border-radius: 8px; border: 1px solid #8886; background: transparent; color: inherit; }
+</style>
+</head>
+<body>
+  <h1>Water LLM</h1>
+
+  <section>
+    <h2>1. Upload a file (Ingestion Agent)</h2>
+    <div class="row">
+      <input type="file" id="fileInput" />
+      <button id="ingestBtn">Ingest</button>
+    </div>
+    <div id="ingestStatus"></div>
+  </section>
+
+  <section>
+    <h2>2. Chat (Query Agent)</h2>
+    <div id="chatLog"></div>
+    <div class="row">
+      <input type="text" id="chatInput" placeholder="Ask something about the vault..." />
+      <button id="sendBtn">Send</button>
+    </div>
+    <div id="chatStatus"></div>
+  </section>
+
+  <script>
+    // Random session id kept in a JS variable only (no localStorage), per plan.
+    const sessionId = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()));
+
+    const fileInput = document.getElementById("fileInput");
+    const ingestBtn = document.getElementById("ingestBtn");
+    const ingestStatus = document.getElementById("ingestStatus");
+
+    ingestBtn.addEventListener("click", async () => {
+      const file = fileInput.files[0];
+      if (!file) {
+        ingestStatus.textContent = "Please choose a file first.";
+        return;
+      }
+      ingestBtn.disabled = true;
+      ingestStatus.textContent = "Ingesting... this can take a while.";
+      try {
+        const formData = new FormData();
+        formData.append("file", file);
+        const res = await fetch("/api/ingest", { method: "POST", body: formData });
+        const data = await res.json();
+        if (!res.ok) {
+          ingestStatus.textContent = "Error: " + (data.detail || res.statusText);
+        } else {
+          ingestStatus.textContent =
+            "Saved raw file: " + data.saved_raw_path + "\n\n" + data.final_response;
+        }
+      } catch (err) {
+        ingestStatus.textContent = "Request failed: " + err;
+      } finally {
+        ingestBtn.disabled = false;
+      }
+    });
+
+    const chatLog = document.getElementById("chatLog");
+    const chatInput = document.getElementById("chatInput");
+    const sendBtn = document.getElementById("sendBtn");
+    const chatStatus = document.getElementById("chatStatus");
+
+    function appendBubble(role, text) {
+      const div = document.createElement("div");
+      div.className = "bubble " + role;
+      div.textContent = text;
+      chatLog.appendChild(div);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const message = chatInput.value.trim();
+      if (!message) return;
+      appendBubble("user", message);
+      chatInput.value = "";
+      sendBtn.disabled = true;
+      chatStatus.textContent = "Thinking...";
+      try {
+        const res = await fetch("/api/query", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message, session_id: sessionId }),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          chatStatus.textContent = "Error: " + (data.detail || res.statusText);
+        } else {
+          appendBubble("assistant", data.answer);
+          chatStatus.textContent = "";
+        }
+      } catch (err) {
+        chatStatus.textContent = "Request failed: " + err;
+      } finally {
+        sendBtn.disabled = false;
+      }
+    }
+
+    sendBtn.addEventListener("click", sendMessage);
+    chatInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") sendMessage();
+    });
+  </script>
+</body>
+</html>

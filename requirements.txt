@@ -1,0 +1,15 @@
+# Web framework
+fastapi
+uvicorn[standard]
+
+# Environment / config
+python-dotenv
+pydantic
+
+# File upload support (required for multipart/form-data in /api/ingest)
+python-multipart
+
+# MCP server
+mcp[fastmcp]
+
+
